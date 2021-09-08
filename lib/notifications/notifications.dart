@@ -5,28 +5,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class Notifications {
-
   BuildContext _context;
 
-  Future<FlutterLocalNotificationsPlugin> initNotifies(BuildContext context) async{
+  Future<FlutterLocalNotificationsPlugin> initNotifies(
+      BuildContext context) async {
     this._context = context;
     //-----------------------------| Inicialize local notifications |--------------------------------------
     var initializationSettingsAndroid =
-    new AndroidInitializationSettings('app_icon');
+        new AndroidInitializationSettings('app_icon');
     var initializationSettingsIOS = new IOSInitializationSettings();
     var initializationSettings = new InitializationSettings(
         android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
-    FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
+    FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+        new FlutterLocalNotificationsPlugin();
     flutterLocalNotificationsPlugin.initialize(initializationSettings,
         onSelectNotification: onSelectNotification);
     return flutterLocalNotificationsPlugin;
     //======================================================================================================
   }
 
-
-
   //---------------------------------| Show the notification in the specific time |-------------------------------
-  Future showNotification(String title, String description, int time, int id, FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
+  Future showNotification(String title, String description, int time, int id,
+      FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
     await flutterLocalNotificationsPlugin.zonedSchedule(
         id.toInt(),
         title,
@@ -40,23 +40,22 @@ class Notifications {
                 color: Colors.cyanAccent)),
         androidAllowWhileIdle: true,
         uiLocalNotificationDateInterpretation:
-        UILocalNotificationDateInterpretation.absoluteTime);
+            UILocalNotificationDateInterpretation.absoluteTime);
   }
 
   //================================================================================================================
 
-
   //-------------------------| Cancel the notify |---------------------------
-  Future removeNotify(int notifyId, FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async{
-    try{
+  Future removeNotify(int notifyId,
+      FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
+    try {
       return await flutterLocalNotificationsPlugin.cancel(notifyId);
-    }catch(e){
+    } catch (e) {
       return null;
     }
   }
 
   //==========================================================================
-
 
   //-------------| function to inicialize local notifications |---------------------------
   Future onSelectNotification(String payload) async {
@@ -71,6 +70,5 @@ class Notifications {
     );
   }
 //======================================================================================
-
 
 }

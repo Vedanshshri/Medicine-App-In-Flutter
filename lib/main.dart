@@ -8,10 +8,9 @@ import './screens/welcome/welcome.dart';
 void main() {
   runApp(MedicineApp());
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    systemNavigationBarColor: Colors.black.withOpacity(0.05),
-    statusBarColor: Colors.black.withOpacity(0.05),
-    statusBarIconBrightness: Brightness.dark
-  ));
+      systemNavigationBarColor: Colors.black.withOpacity(0.05),
+      statusBarColor: Colors.black.withOpacity(0.05),
+      statusBarIconBrightness: Brightness.dark));
 }
 
 class MedicineApp extends StatelessWidget {
