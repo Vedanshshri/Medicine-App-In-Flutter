@@ -204,6 +204,9 @@ class _WelcomeState extends State<Welcome> {
                   ],
                 ),
               ),
+              SizedBox(
+                height: deviceHeight * 0.03,
+              ),
               Container(
                 height: deviceHeight * 0.09,
                 width: double.infinity,
